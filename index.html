@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+<title>Love App</title>
+<style>
+body{                           
+    margin:0;                                
+    font-family: "Dancing Script", cursive;              
+    background: linear-gradient(to bottom,#ff9eb5,#ffc0cb); 
+    display:flex;
+    justify-content:center;                                
+    overflow-x:hidden;
+}
+
+.screen{                              
+	width:100%;
+    max-width:380px;                   
+    background:#ffb6c1;
+    padding:20px;
+    border-radius:25px;                     
+    margin:20px auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);    
+    text-align:center;
+    position:relative;
+}
+
+.hidden{
+    display:none;
+}
+
+.icons{
+    margin:15px 0;
+    display:flex;
+    justify-content:space-around;
+}
+
+.icon-btn{
+    background:transparent;    
+    padding:10px;
+				 
+    border-radius:0;         
+			
+    box-shadow:none;          
+    cursor:pointer;
+    transition:0.2s;
+}
+.icon-btn:active{
+    transform:scale(0.9);
+}
+
+.days{
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    margin-top:10px;
+    font-weight:bold;
+    color:red;
+}
+
+.avatar-box{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    align-items:center;
+}
+				
+.person img{                         
+    width:60px;
+    height:60px;
+    border-radius:50%;
+					
+    object-fit:cover;             
+						
+	animation: spin 5s linear infinite;   
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:red;
+    color:white;
+    cursor:pointer;
+}
+						
+.start-screen{             
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom,#ff6b9d,#ffb6c1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    font-size:24px;
+}
+
+.heart{
+    position:fixed;
+    color:red;
+    animation: float 5s linear infinite;
+}    
+ 			
+                                         
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+@keyframes spin{
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.main-img{
+	width:100%;
+	max-height:420px;
+				
+	object-fit:contain; 
+	border-radius:20px;
+	display:block;
+	box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.image-box{
+    width: 90%;
+    max-width: 380px;
+    aspect-ratio: 1 / 1;
+    margin: 20px auto;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+  			
+.tv-popup{                  
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+                            
+    background: rgba(0,0,0,0.9);   
+    display:none;
+                               
+    justify-content:center;       
+    align-items:center;
+    z-index:999;
+}
+
+.tv-content{
+    position: relative;
+    width:90%;
+    max-width:400px;
+}
+
+.tv-content img{
+    width:100%;
+    border-radius:15px;
+}
+
+.close-tv{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+
+.nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    font-size:35px;
+    color:white;
+    cursor:pointer;
+}
+
+.left{ left:-40px; }
+.right{ right:-40px; }
+.days{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    margin-top:10px;
+}
+
+.couple-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.person{
+    text-align:center;
+}
+
+.person img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff4d6d;
+}
+
+.person p{
+    margin-top:5px;
+    font-weight:bold;
+}
+
+.time-box{
+    text-align:center;
+    font-weight:bold;
+    color:red;
+}
+                             
+.icon-btn img{  
+                                                               
+    width:60px;        
+    height:60px;
+    object-fit:cover;
+                                
+    border-radius:15px; 
+}
+
+.icon-btn:active{
+    transform:scale(0.9);
+}
+#counter{
+	font-size:45px;
+	font-weight:bold;
+	color:#ff4d6d;
+}
+                    
+.day-number{                
+    font-size:50px;
+    font-weight:bold;
+    color:#ff4d6d;
+}
+
+.time-number{
+    font-size:18px;
+    margin-top:5px;
+    color:#d6336c;
+}
+.thumbs{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    overflow-x:auto;
+    padding-bottom:10px;
+}
+
+.thumbs img{
+    width:65px;
+    height:65px;
+    object-fit:cover;
+    border-radius:12px;
+    cursor:pointer;
+    opacity:0.5;
+    transition:0.3s;
+    border:2px solid transparent;
+}
+
+.thumbs img.active{
+    opacity:1;
+    border:2px solid #ff4d6d;
+    transform:scale(1.1);
+}
+.elegant-start{
+    margin-top:30px;
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+    display:inline-block;
+    color:white;
+}
+
+.elegant-start .text{
+    font-size:20px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.elegant-start:hover .text{
+    transform:translateY(-3px);
+}
+
+.ring-ani{
+    display:inline-block;
+    margin-right:8px;
+    animation:ringMove 1.8s ease-in-out infinite;
+    transform-origin:top center;
+}
+
+@keyframes ringMove{
+    0%{ transform:rotate(-12deg); }
+    50%{ transform:rotate(12deg); }
+    100%{ transform:rotate(-12deg); }
+}
+
+.line{
+    height:2px;
+    width:0%;
+    background:white;
+    margin-top:6px;
+    transition:0.4s;
+}
+
+.elegant-start:hover .line{
+    width:100%;
+}
+					</style>
+					</head>
+
+					<body>
+                  
+<!-- LOCK SCREEN -->                    
+                  
+<div id="lockScreen" style="            
+position:fixed; 
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom,#ff6b9d,#ffc0cb);
+display:flex;
+justify-content:center;
+align-items:center;
+              
+z-index:9999;                                
+">
+                           
+<div style="                                 
+background:white;
+padding:30px;
+border-radius:25px;
+width:300px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+">
+
+<h2 style="color:#ff4d6d;">🔒 Nhập mật khẩu 🔒</h2>
+
+<input id="passwordInput" 
+type="password" 
+placeholder="Mật mã tình yêu..."
+style="
+padding:10px;
+border-radius:20px;
+border:1px solid #ccc;
+width:90%;
+margin-top:15px;
+text-align:center;
+font-size:16px;
+">
+<br><br>
+
+<button onclick="checkPassword()" style="
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+">
+Mở khóa ❤️
+</button>
+
+<p id="errorText" style="color:red;margin-top:10px;"></p>
+
+</div>
+</div>
+                                          
+<div class="start-screen" onclick="startApp()">  
+    <img src="anhkhoa.jpg" style="
+	width:200px;
+	border-radius:20px;
+	margin-bottom:20px;
+	box-shadow:0 10px 20px rgba(0,0,0,0.3);
+">
+<div class="elegant-start" onclick="startApp()">
+    <span class="ring-ani">💍</span>
+    <span class="text">Chạm vào để mở câu chuyện của tụi mình</span>
+    <div class="line"></div>
+</div>
+</div>
+
+<div class="screen hidden" id="app">
+
+  	<div class="image-box">
+	<img src="anh1.jpg" id="slide" class="main-img">
+	</div>
+  	
+
+    <div class="icons">
+       <div class="icon-btn" onclick="playMusic()">
+    <img src="music.png">
+</div>
+
+<div class="icon-btn" onclick="showLove()">
+    <img src="Thư.png">
+</div>
+
+<div class="icon-btn" onclick="showTV()">
+    <img src="album.png">
+</div>
+    </div>
+
+   <div class="days">
+    
+    <div class="couple-box">
+        <div class="person">
+            <img src="anh1.jpg">
+            <p>Anh</p>
+        </div>
+
+        <div class="time-box">
+	     <img src="heart.png">
+                <div class="day-number" id="dayNumber"></div>
+		<div class="time-number" id="timeNumber"></div>
+        </div>
+
+        <div class="person">
+            <img src="anh2.jpg">
+            <p>Em</p>
+        </div>
+    </div>
+
+</div>
+              
+<audio id="music" src="nhac.mp3" loop></audio>
+
+<script>
+var startDate = new Date("2024-10-19");
+
+function updateCounter(){
+    var now = new Date();
+    var diff = now - startDate;
+
+    var days = Math.floor(diff/(1000*60*60*24));
+var hours = Math.floor(diff/(1000*60*60)%24);
+    var minutes = Math.floor(diff/(1000*60)%60);
+    var seconds = Math.floor(diff/1000%60);
+
+   var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds();
+
+document.getElementById("dayNumber").innerHTML = days + " ngày";
+document.getElementById("timeNumber").innerHTML =
+    hours + " giờ " + minutes + " phút " + seconds + " giây";
+}
+setInterval(updateCounter,1000);
+updateCounter();
+
+function startApp(){
+    document.querySelector(".start-screen").style.display="none";
+    document.getElementById("app").classList.remove("hidden");
+    playMusic();
+}
+
+function playMusic(){
+    document.getElementById("music").play();
+}
+
+function showLove(){
+    document.getElementById("letterPopup").style.display = "flex";
+}
+
+
+// slideshow                                          
+var images=["anh1.jpg","anh2.jpg"];     
+var i=0;
+                 setInterval(function(){
+                 i=(i+1)%images.length;                         
+                 document.getElementById("slide").src=images[i];
+                      },4000);
+
+// hearts animation                               
+setInterval(function(){
+    var heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove()},5000);
+},500);
+</script>
+<script>
+var correctPassword = "1234"; //           /*đổi mật khẩu ở đây */
+
+function checkPassword(){
+    var input = document.getElementById("passwordInput").value;
+
+    if(input === correctPassword){
+        document.getElementById("lockScreen").style.display = "none";
+    } else {
+        document.getElementById("errorText").innerText = "Sai mật khẩu rồi 😢";
+        document.getElementById("passwordInput").style.border = "2px solid red";
+    }
+}
+function openLetter(){
+    document.getElementById("letterPopup").style.display = "flex";
+}
+
+function closeLetter(){
+    document.getElementById("letterPopup").style.display = "none";
+}
+function showLove(){
+    document.getElementById("letterPopup").style.display = "flex";
+    index = 0;
+    document.getElementById("letterText").innerHTML = "";
+    typeWriter();
+}
+
+function closeLetter(){
+    document.getElementById("letterPopup").style.display = "none";
+    document.getElementById("letterText").innerHTML = "";
+}
+
+var message = "Những ngày tháng qua xin lỗi vì đã làm em buồn phiền nhiều thứ, Cảm ơn em vì đã đến bên anh ❤️";                              
+var index = 0;
+
+function typeWriter(){
+    if(index < message.length){
+        document.getElementById("letterText").innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50); // tốc độ chạy (50ms) 
+    }
+}
+var tvImages = [
+    "TV/ab1.jpg",
+    "TV/ab2.jpg",
+    "TV/ab3.jpg",
+    "TV/ab4.jpg",
+    "TV/ab5.jpg",
+    "TV/ab6.jpg"
+];
+
+var tvIndex = 0;
+function showTV(){
+    document.getElementById("tvPopup").style.display = "flex";
+    generateThumbs();
+    updateTVImage();
+}
+
+function closeTV(){
+    document.getElementById("tvPopup").style.display = "none";
+}
+
+function generateThumbs(){
+    var container = document.getElementById("thumbContainer");
+    container.innerHTML = "";
+
+    tvImages.forEach((src, index)=>{
+        var img = document.createElement("img");
+        img.src = src;
+        img.onclick = function(){
+            tvIndex = index;
+            updateTVImage();
+        };
+        container.appendChild(img);
+    });
+}
+
+function updateTVImage(){
+    document.getElementById("tvImage").src = tvImages[tvIndex];
+
+    var thumbs = document.querySelectorAll(".thumbs img");
+    thumbs.forEach((img, index)=>{
+        img.classList.remove("active");
+        if(index === tvIndex){
+            img.classList.add("active");
+        }
+    });
+}
+</script>
+</div>
+                                           <!-- POPUP THƯ -->
+<div id="letterPopup" style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+">
+
+    <div style="
+        background:#111;
+        color:white;
+        padding:20px;
+        border-radius:15px;
+        width:80%;
+        max-width:300px;
+        text-align:center;
+    ">
+        <p id="letterText"></p>
+        <button onclick="closeLetter()" 
+        style="margin-top:15px;padding:8px 15px;border:none;border-radius:10px;background:red;color:white;">
+            Đóng
+        </button>
+    </div>
+
+</div>
+                                       <!-- POPUP TV -->       
+<div id="tvPopup" class="tv-popup">
+    <span class="close-tv" onclick="closeTV()">×</span>
+
+    <div class="tv-content">
+
+        <img id="tvImage" src="TV/ab1.jpg">
+
+        <div class="thumbs" id="thumbContainer"></div>
+
+    </div>
+</div><script>
+
+
+</script>
+</body>
+</html>
